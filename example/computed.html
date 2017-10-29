@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed Option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed Option</h1>
+    <hr>
+    <div id="app">
+        {{ newprice }}
+
+        <ul>
+            <li v-for="item in newlist"> {{ item.Title}} - {{ item.Date }}</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data: {
+                price : 100,
+                list: [
+                    { "Title": "人民日报：为决胜全面小康实现中国梦而奋斗", "Date": "2017/03/02"},
+                    { "Title": "王毅对制裁朝鲜表态:阻遏朝核开发 呼吁重启会谈", "Date": "2017/03/05"},
+                    { "Title": "这老虎开庭到宣判仅用14天 成十八大后第一人", "Date": "2017/04/12"},
+                    { "Title": "外卖配送服务规范发布:配送员不应进入消费者家中", "Date": "2017/04/26"},
+                ]
+            },
+            computed: {
+                newprice: function(){
+                    return this.price = '￥'+ this.price + ' 元';
+                },
+                newlist: function(){
+                    return this.list.reverse();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

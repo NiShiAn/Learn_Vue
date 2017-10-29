@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        {{ count }}
+        <ul>
+            <li v-for="item in arr">{{ item }}</li>
+        </ul>
+    </div>
+    <button onclick="add();">增加</button>
+
+    <script type="text/javascript">
+        var outdate = {
+            count:1,
+            // goods: "apple"
+            arr: ['aaa', 'bbb', 'ccc']
+        }
+        var app = new Vue({
+            el:"#app",
+            data: outdate
+        });
+        function add(){
+            // Vue.set(outdate,'count',2);
+            // app.count++;
+            // outdate.count++;
+            // app.arr[1]= 'ddd';
+            Vue.set(app.arr, 1 , 'ddd');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model</h1>
+    <hr>
+    <div id="app">
+        {{ message }}
+        <br/>
+        <h3>v-model<input  type="text" v-model="message"/>
+        <h3>v-model.lazy<input  type="text" v-model.lazy="message"/>
+        <h3>v-model.number<input  type="text" v-model.number="message"/>
+        <h3>v-model.trim<input  type="text" v-model.trim="message"/>
+        <hr/>
+        <h3>文本域<textarea  cols="30" rows="10" v-model.trim="message"></textarea>
+        <hr>
+        <input type="checkbox" id="isTure" v-model="isture"/><label for="isTure">{{ isture }}</label>
+        <hr/>
+        {{name}}
+        <br>
+        <input type="radio" name="name" id="name1" v-model="name" value="芳华"/><label for="name1">芳华</label>
+        <input type="radio" name="name" id="name2" v-model="name" value="幸村"/><label for="name2">幸村</label>
+        <input type="radio" name="name" id="name3" v-model="name" value="不野"/><label for="name3">不野</label>
+        <input type="radio" name="name" id="name4" v-model="name" value="直流"/><label for="name4">直流</label>
+        <input type="radio" name="name" id="name5" v-model="name" value="可是"/><label for="name5">可是</label>
+        <hr/>
+        {{student}}
+        <br>
+        <input type="checkbox" id="student1" v-model="student" value="芳华"/><label for="student1">芳华</label>
+        <input type="checkbox" id="student2" v-model="student" value="幸村"/><label for="student2">幸村</label>
+        <input type="checkbox" id="student3" v-model="student" value="不野"/><label for="student3">不野</label>
+        <input type="checkbox" id="student4" v-model="student" value="直流"/><label for="student4">直流</label>
+        <input type="checkbox" id="student5" v-model="student" value="可是"/><label for="student5">可是</label>
+
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data: {
+                message: 'Hello World',
+                isture: false,
+                name:"",
+                student:[]
+            },
+            computed:{
+            }
+        });
+    </script>
+</body>
+</html>

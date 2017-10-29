@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Component 组件</h1>
+    <hr>
+    <div id="app">
+        <ksu></ksu>
+        <panda></panda>
+    </div>
+    <!-- <div id="bpp">
+        <ksu></ksu>
+    </div>
+ -->
+    <script type="text/javascript">
+        Vue.component('ksu',{
+            template: `
+                <h2 style='color: red;'>全局的组件</h2>
+            `
+        })
+        var app = new Vue({
+            el:"#app",
+            components: {
+                "panda":{
+                    template: `
+                        <h2 style='color: green;'>局部的组件</h2>
+                    `
+                }
+            }
+        });
+        // var bpp = new Vue({
+        //     el:"#bpp",
+        // });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component 父子组件关系</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Component 父子组件关系</h1>
+    <hr>
+    <div id="app">
+        <panda></panda>
+    </div>
+
+    <script type="text/javascript">
+        var cityCom = {
+            template: `<h2 style='color: green;'>Sichuan of China!</h2>`
+        }
+
+        var pandaCom = {
+            template: `
+                <div>
+                    <h2 style='color: red;'>Panda from China!</h2>
+                    <city></city>
+                </div>
+            `,//只能有一个根标签
+            components:{
+                "city": cityCom
+            }
+        }
+
+        var app = new Vue({
+            el:"#app",
+            components: {
+                "panda": pandaCom
+            }
+        });
+
+    </script>
+</body>
+</html>

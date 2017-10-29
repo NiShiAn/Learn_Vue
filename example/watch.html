@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch Option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>watch Option</h1>
+    <hr>
+    <div id="app">
+        <p>今日温度：{{ wendu }} 度</p>
+        <p>穿衣建议：{{ suggest }}</p>
+        <p><button @click="rase">升温</button>  <button @click="down">降温</button></p>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data: {
+                wendu : 14,
+                suggest: "夹克长裙"
+            },
+            // watch:{
+            //     wendu: function(newVal, oldVal){
+            //         if(newVal >= 26){
+            //             this.suggest = "T恤短裤";
+            //         }
+            //         else if(newVal <= 26 && newVal > 12){
+            //             this.suggest = "夹克长裙";
+            //         }else{
+            //             this.suggest = "棉袄羽绒";
+            //         }
+            //     }
+            // },
+            methods:{
+                rase: function(){
+                    this.wendu += 3;
+                },
+                down: function(){
+                    this.wendu -= 2;
+                }
+            }
+
+        });
+        app.$watch('wendu', function(newVal, oldVal){
+            if(newVal >= 26){
+                this.suggest = "T恤短裤";
+            }
+            else if(newVal <= 26 && newVal > 12){
+                this.suggest = "夹克长裙";
+            }else{
+                this.suggest = "棉袄羽绒";
+            }
+        })
+    </script>
+</body>
+</html>

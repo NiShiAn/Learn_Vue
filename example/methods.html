@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods Option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods Option</h1>
+    <hr>
+    <div id="app">
+        <p>分数：{{ num }}</p>
+        <button v-on:click="add(3, $event)">加分</button>
+        <br><br>
+        <btn @click.native="add(3, $event)"></btn>
+    </div>
+    <br>
+    <button onclick="app.add(4);">外部加分</button>
+    <script type="text/javascript">
+        var btns = {
+            template: `
+                <button>组件加分</button>
+            `
+        }
+        var app = new Vue({
+            el:"#app",
+            data: {
+                num : 1
+            },
+            components:{
+                "btn": btns
+            },
+            methods:{
+                add: function(a, event){
+                    if(a != ''){
+                        this.num += a;
+                    }else{
+                        this.num++;
+                    }
+                    console.log(event);
+                },
+            }
+
+        });
+    </script>
+</body>
+</html>

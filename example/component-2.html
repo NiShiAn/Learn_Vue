@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component props</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Component 组件props属性设置</h1>
+    <hr>
+    <div id="app">
+        <panda here="china" from-here='中国' :vbn="msg"></panda>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg: "四川"
+            },
+            components: {
+                "panda":{
+                    template: `
+                        <h2 style='color: green;'>Panda from {{ here }} {{ fromHere}} {{ vbn }}</h2>
+                    `,
+                    props: ['here', 'fromHere', 'vbn']
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

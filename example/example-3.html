@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example methods Demo</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+</head>
+<body>
+    <h1>实例事件</h1>
+    <hr>
+    <div id="app">
+        <p>分数：{{ num }}</p>
+        <button v-on:click="add">加分</button>
+    </div>
+    <br>
+    <button onclick="del();">减分</button>
+    <br><br>
+    <button onclick="odel();">减分一次</button>
+    <br><br>
+    <button onclick="off();">关闭减分事件</button>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data: {
+                num : 1
+            },
+            methods:{
+                add: function(){
+                    this.num++;
+                }
+            }
+        });
+        //外部添加事件
+        app.$on('reduce',function(){
+            console.log('执行外部事件');
+            this.num--;
+        })
+        //只执行一次事件
+        app.$once('onceReduce', function(){
+            console.log('只执行一次的外部事件');
+            this.num -= 5;
+        });
+        //关闭外部方法
+        function off(){
+            app.$off('reduce');
+        }
+        function del(){
+            app.$emit('reduce');
+        }
+        function odel(){
+            app.$emit('onceReduce');
+        }
+
+    </script>
+</body>
+</html>

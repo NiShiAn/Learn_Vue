@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.directive 自定义指令</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-jsp="color">{{ num }}</div>
+        <button @click="add">累加</button>
+    </div>
+
+    <button onclick="unbind();">解绑</button>
+
+    <script type="text/javascript">
+        Vue.directive('jsp', {
+            bind:function(el, binding){//绑定是调用
+                el.style = "color:" + binding.value;
+                console.log("1 - bind");
+            },
+            inserted: function(){//绑定到节点
+                console.log("2 - inserted");
+            },
+            update: function(){//组件更新
+                console.log("3 - update");
+            },
+            componentUpdated:function(){//组件更新完成
+                console.log("4 - componentUpdate");
+            },
+            unbind:function(){//解绑
+                console.log("5 - unbind");
+            }
+        });
+
+        var app = new Vue({
+            el:"#app",
+            data: {
+                num : 1,
+                color: "red"
+            },
+            methods: {
+                add: function(){
+                    this.num++;
+                }
+            }
+        });
+
+        function unbind(){
+            app.$destroy();
+        }
+    </script>
+</body>
+</html>

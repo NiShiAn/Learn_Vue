@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template 三种方法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Template 三种方法</h1>
+    <hr>
+    <div id="app">
+        {{ msg }}
+    </div>
+    <template id="myt">
+        <h2 style="color: red;">方法二：标签模板</h2>
+    </template>
+    <!-- 外部引用 -->
+    <script type="x-template" id="mys">
+        <h2 style="color: red;">方法三：script标签模板</h2>
+    </script>
+    
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data: {
+                msg : 'hello worldsss'
+            },
+            template: '#mys'
+            // template: '#myt'
+            // template: `
+            //     <h2 style='color: red;'>方法一：选项模板</h2>
+            // `
+        });
+    </script>
+</body>
+</html>

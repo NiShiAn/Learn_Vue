@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example methods Demo</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+</head>
+<body>
+    <h1>$mount挂载方法</h1>
+    <hr>
+    <div id="app">
+        
+    </div>
+
+    <button type="" onclick="destroy()";>卸载</button>
+    <br><br>
+    <button type="" onclick="reload()";>刷新</button>
+    <br><br>
+    <button type="" onclick="tick()";>更改数据</button>
+
+    <script type="text/javascript">
+        var ngy = Vue.extend({
+            template: `<h2>{{msg}}</h2>`,
+            data: function(){
+                return {
+                    msg: "Hello World!"
+                }
+            },
+            mounted:function(){
+                console.log("创建了");
+            },
+            destroyed: function(){
+                console.log("被卸载掉了");
+            },
+            updated: function(){
+                console.log("更新之后");
+            }
+        })
+        //挂载
+        var vm = new ngy().$mount('#app');
+        //销毁
+        function destroy(){
+            vm.$destroy();
+        }
+        //更新
+        function reload(){
+            vm.$forceUpdate()
+        }
+        //数据修改
+        function tick(){
+            vm.msg = "一看到孩子就热泪盈眶";
+            vm.$nextTick(function(){
+                console.log("数据被更新了");
+            })
+        }
+    </script>
+</body>
+</html>

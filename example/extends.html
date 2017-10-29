@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>extends Option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>extends Option</h1>
+    <hr>
+    <div id="app">
+        <p>分数：${ num }</p>
+        <button v-on:click="add">加分</button>
+    </div>
+    <br>
+    <script type="text/javascript">
+        var extendsObj = {
+            updated: function(){
+                console.log("扩展的updated");
+            },
+            methods: {
+                add: function(a, event){
+                    console.log("扩展的方法");
+                    this.num++;
+                },
+            }
+        }
+        var app = new Vue({
+            el:"#app",
+            data: {
+                num : 1
+            },
+            methods:{
+                add: function(a, event){
+                    console.log("原生方法");
+                    this.num++;
+                },
+            },
+            updated: function(){
+                console.log("原生的updated");
+            },
+            extends: extendsObj,
+            delimiters: ['${','}']
+
+        });
+    </script>
+</body>
+</html>

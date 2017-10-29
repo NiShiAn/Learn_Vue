@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <style>
+        .input{
+            width: 150px;
+        }
+        .error{
+            color: red
+        }
+        .text{
+            font-weight: 600;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>v-bind</h1>
+    <hr>
+    <div id="app">
+        <input :type="type" v-bind:class="classA"/>
+        <p :class="{ error:isOK }">{{ isOK }}</p>
+        <p :class="[classB, classC]">{{ isOK }}</p>
+        <p :class="isOK?classB:classC">{{ isOK }}</p>
+
+        <input type="checkbox" v-model="isOK" id="is"/>
+        <label for="is">{{ isOK }}</label>
+        <hr>
+        <div :style="{color: red,fontSize: font}">sss</div>
+        <div :style="styleA">sss</div>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data: {
+                type: "date",
+                classA: "input",
+                classB: "error",
+                classC: "text",
+                isOK: false,
+                red: "red",
+                font: "20px",
+                styleA: {
+                    color: 'green',
+                    fontSize: '20px'
+                }
+            },
+            computed:{
+            }
+        });
+    </script>
+</body>
+</html>

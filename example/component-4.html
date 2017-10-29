@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>HelloWorld</h1>
+    <hr>
+    <div id="app">
+        <component :is="who"></component>
+        <button @click="change">改变</button>
+    </div>
+
+    <script type="text/javascript">
+        var comA = {
+            template: `
+                <h2 style='color: red;'>I'm ComponentA!</h2>
+            `
+        }
+        var comB = {
+            template: `
+                <h2 style='color: green;'>I'm ComponentB!</h2>
+            `
+        }
+        var comC = {
+            template: `
+                <h2 style='color: blue;'>I'm ComponentC!</h2>
+            `
+        }
+
+        var app = new Vue({
+            el:"#app",
+            data: {
+                who : 'ComponentC'
+            },
+            components:{
+                "ComponentA": comA,
+                "ComponentB": comB,
+                "ComponentC": comC
+            },
+            methods:{
+                change: function(){
+                    this.who =  this.who == "ComponentA" 
+                    ? "ComponentB" : this.who == "ComponentB" 
+                    ? "ComponentC" : this.who == "ComponentC"
+                    ? "ComponentA" : "ComponentC";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

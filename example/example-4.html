@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example methods Demo</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+</head>
+<body>
+    <h1>solt讲解</h1>
+    <hr>
+    <div id="app">
+        <ngy>
+            <span slot="url">{{ blog.url }}</span>
+            <span slot="name">{{ blog.name }}</span>
+            <span slot="skill">{{ blog.skill }}</span>
+        </ngy>
+    </div>
+
+    <template id="tep">
+        <div>
+            <p>博客地址：<slot name="url"></slot></p>
+            <p>网名：<slot name="name"></slot></p>
+            <p>个人技能：<slot name="skill"></slot></p>
+        </div>
+    </template>
+
+    <script type="text/javascript">
+        var ngy = {
+            template: "#tep"
+        }
+        var app = new Vue({
+            el:"#app",
+            data: {
+                blog: {
+                    url: "http://www.baidu.com",
+                    name: "ngy",
+                    skill: "Web前端"
+                }
+            },
+            components:{
+                "ngy": ngy
+            }
+        });
+    </script>
+</body>
+</html>
